@@ -1,1 +1,141 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #ffcccb, #ff7e79);
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #ff4d4d;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .ok-button {
+            background-color: #ff9999;
+            color: white;
+        }
+
+        .nope-button {
+            background-color: #ffc4c4;
+            color: black;
+        }
+
+        /* Popup Style */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
+            font-size: 2em;
+            text-align: center;
+            color: #ff7e79;
+            z-index: 1000;
+        }
+
+        /* Floating hearts animation */
+        @keyframes floatingHearts {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100vh); }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.7);
+            animation: floatingHearts 5s infinite;
+            opacity: 0.8;
+        }
+
+        .heart:nth-child(odd) {
+            animation-duration: 7s;
+        }
+
+        .heart:nth-child(even) {
+            animation-duration: 4s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>I’m Sorry, Can We Fix This?</h1>
+        <div class="button-container">
+            <button class="ok-button" onclick="showLoveMessage()">OK</button>
+            <button class="nope-button" onclick="showPleaseMessage()">Nope</button>
+        </div>
+    </div>
+
+    <!-- Pop-up for Romantic Telugu Message -->
+    <div id="popup">నీతో నా గుండె ప్రతీ తిప్పకు సంతోషం స్ఫురిస్తుంది ❤️</div>
+
+    <!-- Floating hearts -->
+    <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="heart" style="left: 30%; animation-delay: 2s;">❤️</div>
+    <div class="heart" style="left: 50%; animation-delay: 1s;">❤️</div>
+    <div class="heart" style="left: 70%; animation-delay: 3s;">❤️</div>
+    <div class="heart" style="left: 90%; animation-delay: 0.5s;">❤️</div>
+
+    <script>
+        let pleaseCount = 0;
+
+        // Function to show the poetic "I love you" message
+        function showLoveMessage() {
+            document.getElementById('popup').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('popup').style.display = 'none';
+            }, 3000); // Show for 3 seconds
+        }
+
+        // Function to show the "Please" message if "Nope" is clicked
+        function showPleaseMessage() {
+            pleaseCount++;
+            if (pleaseCount < 3) {
+                alert("Please! 🙏");
+            } else {
+                alert("Pretty please! 💕");
+            }
+        }
+    </script>
+</body>
+</html>
+
